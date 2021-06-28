@@ -21,5 +21,6 @@ public class Ex11GradeBook {
  // 평균
  System.out.println((korGrade + EngGrade + mathGrade)/3f);
  // 88.0
+ //
     }
 }
