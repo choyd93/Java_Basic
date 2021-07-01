@@ -11,25 +11,35 @@ import java.util.Scanner;
 public class BmiCalc {
     public static void main(String[] args) {
        Scanner scanner = new Scanner(System.in);
+       
+       // 1. 사용자로부터 이름을 입력받아 변수에 저장한다.
        System.out.println("이름을 입력해주세요");
        System.out.print("> ");
        String name = scanner.nextLine();
        
-       Scanner scanner1 = new Scanner(System.in);
-       System.out.println("키를 입력해주세요");
+       // 2. 사용자로부터 키를 입력받아 변수에 저장한다.
+       System.out.println("키를 m 단위로 입력해주세요");
        System.out.print("> ");
-       double height = scanner1.nextDouble();
+       double height = scanner.nextDouble();
        
-       Scanner scanner2 = new Scanner(System.in);
-       System.out.println("몸무게를 입력해주세요");
+       // 3. 사용자로부터 몸무게를 입력받아 변수에 저장한다.
+       System.out.println("몸무게를 kg단위로 입력해주세요");
        System.out.print("> ");
-       double weight = scanner2.nextDouble();
+       double weight = scanner.nextDouble();
        
-       double BMI = (weight / (height * height));
+       // 4. BMI를 계산하여 변수에 저장한다.
+       //내가 쓴 답
+       //double BMI = (weight * (height / height));
+       // 정답
+       double bmi = weight / height / height;
        
-       System.out.printf("이름 : %s 키 : %03.2fm 몸무게 : %05.2fkg\n", name, height, weight);
-       System.out.printf("BMI 수치 : %05.2f\n", BMI);
-      
+       // 5. 출력한다.
+       //System.out.printf("이름 : %s 키 : %03.2fm 몸무게 : %05.2fkg\n", name, height, weight);
+       System.out.printf("이름 : %s 키 : %.2f m 몸무게 : %.2f kg\n", name, height, weight);
+       //System.out.printf("BMI 수치 : %05.2f\n", bmi);
+       System.out.printf("BMI 수치 : %.3f\n", bmi);
+
+       scanner.close();
     }
 
 }
