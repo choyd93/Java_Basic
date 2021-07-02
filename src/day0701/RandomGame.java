@@ -32,8 +32,8 @@ public class RandomGame {
 
         // 객체 생성
         Scanner scanner = new Scanner(System.in);
-        Random random = new Random(100); // 랜덤은 시스템인없음.
-        // 여기 100을 안넣었음.
+        Random random = new Random(); // 랜덤은 시스템인 없음.
+        // 여기 100넣으면 안됨.
 
         // 변수 선언. 플레이 선택은 유저초이스 변수로 생성
         int number = 0; // 유저 선택 숫자
@@ -51,7 +51,7 @@ public class RandomGame {
             System.out.println("1. 플레이 2. 최고기록 보기 3. 종료");
             System.out.print("> ");
             userChoice = scanner.nextInt();
-            score++;
+            // 여기에 하면 첨부터 2점 score++;
 
 
             // 메뉴 잘못 입력했을 때 블록
@@ -73,13 +73,13 @@ public class RandomGame {
                 randomNumber = random.nextInt(100) + 1;
 
                 // 유저 숫자 입력
-                System.out.print("0~100까지 숫자를 입력해주세요. : ");
+                System.out.print("1~100까지 숫자를 입력해주세요. : ");
                 number = scanner.nextInt();
 
                 // 잘못된 값 블록
                 while (!(number >= 0 && number <= 100)) {
                     System.out.println("잘못된 값을 입력하셨습니다.");
-                    System.out.println("0~100까지 숫자를 입력해주세요.");
+                    System.out.println("1~100까지 숫자를 입력해주세요.");
                     System.out.print("> ");
                     number = scanner.nextInt();
                 }
@@ -113,18 +113,18 @@ public class RandomGame {
                     System.out.printf("현재 기록 : %d회\n", score);
                 }
                 */
-                while(!(number == randomNumber)) {
+               while(!(number == randomNumber)) {
                 if (number == randomNumber) {
                     System.out.println("정답!");
                     System.out.printf("현재 기록 : %d회\n", score);
                     break;
                     // 여기코드가 밑에 코드랑 겹침. 여긴 왜출력이 안될까
-                    
+                    //위랑 겹쳐서 안됨.
                 } else if (number < randomNumber) {
                     System.out.println("UP");
                     System.out.print("0~100까지 숫자를 입력해주세요 : ");
                     number = scanner.nextInt();
-                    continue;
+                    continue; // 이거는 안쓰는 게 좋음.
 
                 } else if (number > randomNumber) {
                     System.out.println("Down");
@@ -137,6 +137,8 @@ public class RandomGame {
                 System.out.printf("현재 기록 : %d회\n", score);
             }
             // 2. 최고 기록 보기. 최대값을 모르겠음.
+            max = score / 
+            
             if (userChoice == 2) {
                 if (inputSwitch) {
 
@@ -148,7 +150,7 @@ public class RandomGame {
                 // 3. 종료
             } else if (userChoice == 3) {
                 System.out.println("이용해주셔서 감사합니다.");
-                break; // 이거 언제 써야 되는걸까
+                break;
             }
 
         }
