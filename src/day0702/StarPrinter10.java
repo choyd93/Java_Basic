@@ -19,25 +19,32 @@ public class StarPrinter10 {
         for (int i = iStart; i <= iEnd; i++) {
             String stars = "";
             
-            // 2번 왼쪽 윗 부분
-            int jStart = i;
-            int jEnd = userNumber; 
+            // 왼쪽 별 부분
+            int jStart = userNumber;
+            int jEnd = i; 
 
-            for (int j = jStart; j <= jEnd; j++) {
+            for (int j = jStart; j >= jEnd; j--) {
                 stars += "*";
             }
             
-            // 4번 공백을 담당하는 j for 문
+            // 왼쪽 별 담당하는 j for 문
+            jStart = 1;
+            jEnd = i - 1;
+            for (int j = jStart; j <= jEnd; j++) {
+                stars += " ";
+            }
+            
+            // 오른쪽 공백을 담당하는 j for 문
             jStart = 1;
             jEnd = i - 1;
             for (int j = jStart; j <= jEnd; j++) {
                 stars += " ";
             }
 
-            // 4번별을 담당하는 j for 문
-            jStart = i;
-            jEnd = userNumber;
-            for (int j = jStart; j <= jEnd; j++) {
+            // 오른쪽 별을 담당하는 j for 문
+            jStart = userNumber;
+            jEnd = i;
+            for (int j = jStart; j >= jEnd; j--) {
                 stars += "*";
             }
 
@@ -46,7 +53,7 @@ public class StarPrinter10 {
         // 세로2
         for(int i = iStart; i <= iEnd; i++) {
 
-            //
+            // 왼쪽 별
             String stars = "";
             
             int jStart = 1;
@@ -57,16 +64,23 @@ public class StarPrinter10 {
                 stars += "*";
             }
             
-            // 공백을 담당하는 j for 문
-            jStart = 1;
-            jEnd = userNumber - i;
-            for (int j = jStart; j <= jEnd; j++) {
+            // 왼쪽 공백
+            jStart = userNumber;
+            jEnd = i;
+            for (int j = jStart; j >= jEnd; j--) {
                 stars += " ";
 
             }
 
-            // 별을 담당하는 j for 문
-            jStart = 1;
+            // 오른쪽 공백 
+            jStart = userNumber;
+            jEnd = i;
+            for (int j = jStart; j >= jEnd; j--) {
+                stars += " ";
+            }
+            
+            // 오른쪽 별
+            jStart = 2;
             jEnd = i;
             for (int j = jStart; j <= jEnd; j++) {
                 stars += "*";
