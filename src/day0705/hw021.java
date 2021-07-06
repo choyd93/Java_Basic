@@ -29,7 +29,7 @@ import java.util.Random;
 // 프로그램을 종료시킨다.
 import java.util.Scanner;
 
-public class hw02 {
+public class hw021 {
 
     public static void main(String[] args) {
         // 입력에 사용할 Scanner 클래스 변수
@@ -135,6 +135,7 @@ public class hw02 {
 
                 } // 10. 플레이 기능 종료
             } else if (userChoice == 2) {
+                
                 // 사용자가 최고 기록 보기를 실행했을 때
 
                 // 만약 사용자가 한번이라도 플레이를 하였으면

@@ -37,6 +37,7 @@ package day0705;
 //3. 종료
 // 프로그램을 종료시킨다.
 
+// 내가 푼 버젼
 import java.util.Scanner;
 
 public class hw {
