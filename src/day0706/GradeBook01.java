@@ -14,6 +14,7 @@ package day0706;
 // 강사님 코드 
 
 import java.util.Scanner;
+
 import util.ScannerUtil;
 
 public class GradeBook01 {
