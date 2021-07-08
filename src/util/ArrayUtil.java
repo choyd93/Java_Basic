@@ -9,6 +9,7 @@ public class ArrayUtil {
     public static int size(int[] arr) {
         return arr.length;
     }
+    
     // B. isEmpty()
     //    해당 배열의 엘리먼트가 아무것도 존재하지 않으면 true
     //    존재하면 false가 나온다.
@@ -22,14 +23,13 @@ public class ArrayUtil {
         //return arr.length == 0; <-- 원래 이건데 밑에 나오는 값은 위에서 만든 메소드를 사용한것.
         return size(arr) == 0;
     }
-    
+
     // C. get()
     //    파라미터로 들어온 배열에 
     //    파라미터로 들어온 인덱스 값에 있는 값을 리턴한다.
     public static int get(int[] arr, int index) {
         return arr[index];
-    }
-    
+    }    
     
     // D. contains()
     //    파라미터로 들어온 배열에 파라미터로 들어온 int 값이
@@ -42,7 +42,6 @@ public class ArrayUtil {
             }
         }
         return false;
-        
     }
     
     // E. indexOf()
@@ -83,10 +82,14 @@ public class ArrayUtil {
     
     // G. clear()
     //    아무것도 없는 배열을 리턴한다.
-    public static int[] clear() {
-        int[] temp = new int[0];
+    public static int[] clear(int[] arr) {
+        //int[] temp = new int[0];
+        //return temp;
+        // double clear 가 생겨서 파라미터 추가하고 아래처럼 만듬. 
         
-        return temp;
+        arr= new int[0];
+        
+        return arr;
     }
     
     // H.add()
@@ -165,7 +168,380 @@ public class ArrayUtil {
            
         return arr;
     }
+    
+    // J. set()
+    //      해당 배열의 특정 위치의 값을 다른 값으로 바꾼다.
+    //      단, 원래 있던 값은 우리가 다른데서 사용할 '수'도 있으니깐
+    //      리턴되서 호출된 곳으로 보내주도록 한다.
+    public static int set(int[] arr, int index, int e) {
+        int temp = get(arr, index);
+        arr[index] = e;
+        
+        return temp;
+    }
+    
+    // K. remove()
+    //    해당 배열에 특정 인덱스를 삭제하고
+    //    크기가 1 줄어든 배열을 리턴한다.
+    public static int[] remove(int[] arr, int index) {
+        // 먼저 유효한 인덱스인지 체크한다.
+        if(index >= 0 && index < size(arr)) {
+            // 1. 먼저 arr의 현재 내용을 임시로 만든 배열에 저장한다.
+            int[] temp = new int[size(arr)];
+            for(int i = 0; i < size(arr); i++) {
+                temp[i] = get(arr, i);
+            }
+            
+            // 2. arr의 크기를 1 줄여서 새로 만든다.
+            arr = new int[size(temp) - 1];
+            
+            // 3. temp로부터 0부터 index이전까지 복사한다.
+            for(int i = 0; i < index; i++) {
+                arr[i] = get(temp, i);
+            }
+            
+            // 4. temp로부터 index+1부터 끝까지 복사한다.
+            for(int i = index + 1; i < size(temp); i++) {
+                arr[i - 1] = get(temp,i);              
+            }            
+        }
+                
+        return arr;
+    }
+    
+    //내용을 포함해 시작태그와 종료태그까지를 엘리먼트라고 함.
+    
+    // L. removeByElement()
+    //    해당 배열에서 특정 엘리먼트와 일치하는
+    //    칸을 삭제한다. 
+    //    단, 다른 데이터 타입은 오버로딩이 가능하기 떄문에
+    //    remove()라고 해줘도 되지만,
+    //    int[]의 기준에서는 파라미터로 들어온 int값이
+    //    인덱스를 말하는지, 삭제할 엘리먼트를 말하는 건지
+    //    불명확하기 때문에 int[]만 메소드 이름을
+    //    removeByElement()라고 한다.
+    public static int[] removeByElement(int[] arr, int e) {
+        //int index = indexOf(arr,e);
+        //arr = remove(arr, index);
+        // return arr;
+        
+        // -> 위의 코드를 줄인것.
+        // arr = remove(arr, indexOf(arr,e));
+        // return arr;
+        
+        // -> 위의 코드를 줄인것.
+        
+        return remove (arr,indexOf(arr,e));
+        
+    }
+    
+    
+    
+    
+    
+    
+    // 2. double 배열
+    // A. size(arr)
+    public static int size(double[] arr) { // <- int로 리턴 (크기는 항상 int)
+        return arr.length;
+    }
+    // B. isEmpty(arr)
+    public static boolean isEmpty(double[] arr) {
+        return size(arr) == 0;
+    }
+    
+    // C. get(arr, index)
+    public static double get(double[] arr, int index) {
+        return arr[index];
+    }
+    
+    // D. contains(arr, e)
+    public static boolean contains(double[] arr, double e) { // e는 엘리먼트 약자
+        for(int i = 0; i < size(arr); i++) {
+            if(get(arr, i) == e){
+                return true;               
+            }
+        }
+        return false;
+    }
+    // E. indexOf(arr, e)
+        public static int indexOf(double[] arr, double e) { //<- int로 리턴
+        for(int i = 0; i < size(arr); i++) {
+            if(get(arr, i) == e) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    // F. lastIndexOf(arr, e)
+        public static int lastIndexOf(double[] arr, double e) { //<- int로 리턴
+        for(int i = size(arr) - 1; i >= 0; i--) { 
+            //<- 이거 중요. -1을 하는 이유는 숫자는 1-5지만
+            // 배열은 0-4이기 떄문임.
+            
+            if(get(arr, i) == e) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    // G. clear(arr)
+        public static double[] clear(double[] arr) { // int clear가 파라미터가 없으니까 int, double 둘다 파라미터 추
+        //double[] temp = new double[0];
+        //return temp;
+        arr = new double[0];
+        return arr;
+    }
+    // H. add(arr, e)
+        public static double[] add(double[] arr, double e) {
+        double[] temp = new double[size(arr)];       
+        
+        // 2. arr의 내용을 temp에 복사한다.
+        for(int i = 0; i < size(arr); i++) {
+            temp[i] = get(arr, i);
+        }
+        
+        // 3. arr의 크기를 1 늘린다.
+        arr = new double[size(temp) + 1];
+        
+        // 4. temp의 내용을 arr에 복사한다.
+        for(int i = 0; i < size(temp); i++) {
+            arr[i] = get(temp, i);
+        }
+        
+        // 5. arr의 가장 마지막 인덱스에
+        //    e를 넣는다.
+        //int lastIndex = size(arr) - 1;
+        //arr[lastIndex] = e;
+        
+        arr[size(arr) - 1] = e;
+        
+        // 6. 그렇게 크기가 늘어난 arr을
+        //    리턴한다.
+        
+        return arr;
+    }
+    // I. add(arr, index, e)
+       public static double[] add(double[] arr, int index, double e) {
+           if(index >= 0 && index < size(arr)) {
+               double[] temp = new double[size(arr)];
+               
+               for(int i = 0; i < size(arr); i++) {
+                   temp[i] = get(arr,i);
+               }
+               arr = new double[size(temp) + 1];
+               
+               for(int i = 0; i < index; i++) {
+                   arr[i] = get(temp,i);
+               }
+               
+               arr[index] = e;
+               
+               for(int i = index; i <size(temp); i++) {
+                   arr[i+1] = get(temp, i);
+               }
+           }
+           return arr;
+       }
+    // J. set(arr, index, e)
+       public static double set(double[] arr, int index, double e) {
+           double temp = get(arr, index);
+           arr[index] = e;
+           
+           return temp;
+       }
+       
+    // K. remove(arr, index)
+       public static double[] remove(double[] arr, int index) {
+           // 먼저 유효한 인덱스인지 체크한다.
+           if(index >= 0 && index < size(arr)) {
+               // 1. 먼저 arr의 현재 내용을 임시로 만든 배열에 저장한다.
+               double[] temp = new double[size(arr)];
+               
+               for(int i = 0; i < size(arr); i++) {
+                   temp[i] = get(arr, i);
+               }
+               
+               // 2. arr의 크기를 1 줄여서 새로 만든다.
+               arr = new double[size(temp) - 1];
+               
+               // 3. temp로부터 0부터 index이전까지 복사한다.
+               for(int i = 0; i < index; i++) {
+                   arr[i] = get(temp, i);
+               }
+               
+               // 4. temp로부터 index+1부터 끝까지 복사한다.
+               //for(int i = index + 1; i < size(temp); i++) {
+               //   arr[i - 1] = get(temp,i);              
+               //}            
+               for(int i = index; i < size(arr); i++) {
+                  arr[i] = get(temp,i + 1);   
+           }
+       } return arr;
+       }
+       
+    // L. remove(arr, element)
+          public static double[] remove(double[] arr, double e) {
+              return remove (arr,indexOf(arr,e));
+          }
+    
+    // 2. String 배열
+
+          // A. size(arr)
+          public static int size(String[] arr) { // <- int로 리턴 (크기는 항상 int)
+              return arr.length;
+          }
+          // B. isEmpty(arr)
+          public static boolean isEmpty(String[] arr) {
+              return size(arr) == 0;
+          }
+          
+          // C. get(arr, index)
+          public static String get(String[] arr, int index) {
+              return arr[index];
+          }
+          
+          // D. contains(arr, e)
+          public static boolean contains(String[] arr, String e) { // e는 엘리먼트 약자
+              for(int i = 0; i < size(arr); i++) {
+                  if(get(arr, i).equals(e)){ // <- 여기부터 이퀄
+                      return true;               
+                  }
+              }
+              return false;
+          }
+          // E. indexOf(arr, e)
+              public static int indexOf(String[] arr, String e) { //<- int로 리턴
+              for(int i = 0; i < size(arr); i++) {
+                  if(get(arr, i).equals(e)) {
+                      return i;
+                  }
+              }
+              return -1;
+          }
+          // F. lastIndexOf(arr, e)
+              public static int lastIndexOf(String[] arr, String e) { //<- int로 리턴
+              for(int i = size(arr) - 1; i >= 0; i--) { 
+                  //<- 이거 중요. -1을 하는 이유는 숫자는 1-5지만
+                  // 배열은 0-4이기 떄문임.
+                  
+                  if(get(arr, i).equals(e)) {
+                      return i;
+                  }
+              }
+              return -1;
+          }
+          // G. clear(arr)
+              public static String[] clear(String[] arr) { // int clear가 파라미터가 없으니까 int, double 둘다 파라미터 추
+              //double[] temp = new double[0];
+              //return temp;
+              arr = new String[0];
+              return arr;
+          }
+          // H. add(arr, e)
+              public static String[] add(String[] arr, String e) {
+              String[] temp = new String[size(arr)];       
+              
+              // 2. arr의 내용을 temp에 복사한다.
+              for(int i = 0; i < size(arr); i++) {
+                  temp[i] = get(arr, i);
+              }
+              
+              // 3. arr의 크기를 1 늘린다.
+              arr = new String[size(temp) + 1];
+              
+              // 4. temp의 내용을 arr에 복사한다.
+              for(int i = 0; i < size(temp); i++) {
+                  arr[i] = get(temp, i);
+              }
+              
+              // 5. arr의 가장 마지막 인덱스에
+              //    e를 넣는다.
+              //int lastIndex = size(arr) - 1;
+              //arr[lastIndex] = e;
+              
+              arr[size(arr) - 1] = e;
+              
+              // 6. 그렇게 크기가 늘어난 arr을
+              //    리턴한다.
+              
+              return arr;
+          }
+          // I. add(arr, index, e)
+             public static String[] add(String[] arr, int index, String e) {
+                 if(index >= 0 && index < size(arr)) {
+                     String[] temp = new String[size(arr)];
+                     
+                     for(int i = 0; i < size(arr); i++) {
+                         temp[i] = get(arr,i);
+                     }
+                     arr = new String[size(temp) + 1];
+                     
+                     for(int i = 0; i < index; i++) {
+                         arr[i] = get(temp,i);
+                     }
+                     
+                     arr[index] = e;
+                     
+                     for(int i = index + 1; i < size(arr); i++) {
+                         arr[i] = get(temp, i - 1);
+                     }
+                 }
+                 return arr;
+             }
+             
+          // J. set(arr, index, e)
+             public static String set(String[] arr, int index, String e) {
+                 String temp = get(arr, index);
+                 arr[index] = e;
+                 
+                 return temp;
+             }
+             
+          // K. remove(arr, index)
+             public static String[] remove(String[] arr, int index) {
+                 // 먼저 유효한 인덱스인지 체크한다.
+                 if(index >= 0 && index < size(arr)) {
+                     // 1. 먼저 arr의 현재 내용을 임시로 만든 배열에 저장한다.
+                     String[] temp = new String[size(arr)];
+                     
+                     for(int i = 0; i < size(arr); i++) {
+                         temp[i] = get(arr, i);
+                     }
+                     
+                     // 2. arr의 크기를 1 줄여서 새로 만든다.
+                     arr = new String[size(temp) - 1];
+                     
+                     // 3. temp로부터 0부터 index이전까지 복사한다.
+                     for(int i = 0; i < index; i++) {
+                         arr[i] = get(temp, i);
+                     }
+                     
+                     // 4. temp로부터 index+1부터 끝까지 복사한다.
+                     //for(int i = index + 1; i < size(temp); i++) {
+                     //   arr[i - 1] = get(temp,i);              
+                     //}            
+                     for(int i = index; i < size(arr); i++) {
+                        arr[i] = get(temp,i + 1);   
+                 }
+             } return arr;
+             }
+             
+          // L. remove(arr, element)
+                public static String[] remove(String[] arr, String e) {
+                    return remove (arr,indexOf(arr,e));
+                }
+    
 }
+
+
+
+
+
+
+
+
+
 
 
 

@@ -13,7 +13,7 @@ import util.ScannerUtil;
 
 public class Hw020 {
     // 상수
-    static final int SUBJEC_SIZE = 3;
+    static final int SUBJECT_SIZE = 3;
     static final int STUDENT_SIZE = 5;
     static final int SCORE_MIN = 0;
     static final int SCORE_MAX = 100;
@@ -81,14 +81,8 @@ public class Hw020 {
         scanner.close();
     }
     
-    // <- 메소드 중요
-    private static void printAll(int index, int[] idArray, String[] nameArray, int[] koreanArray, int[] englishArray,
-            int[] mathArray) {
-        // TODO Auto-generated method stub
-        
-    }
 
-    public static void printAll(int[] index, int[] idArray,
+    public static void printAll(int index, int[] idArray, 
             String[] nameArray, int[] koreanArray,
             int[] englishArray, int[] mathArray) {
         if(index > 0) {
@@ -113,12 +107,7 @@ public class Hw020 {
         }
     }
     
-    private static void printOne(int id, String name, int korean, int english, int math) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    public static void printOne(int id, String name, int korean int english, int math) {
+    public static void printOne(int id, String name, int korean, int english, int math) {
         int sum = korean + english + math;
         double average = (double)sum / SUBJECT_SIZE;
         

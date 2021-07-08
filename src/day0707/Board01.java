@@ -120,9 +120,7 @@ public class Board01 {
           System.out.println("---------------------");
           System.out.println(boardArray[i][INDEX_CONTENT]);
           System.out.println();
-
       }
-       
    }
 
 }
