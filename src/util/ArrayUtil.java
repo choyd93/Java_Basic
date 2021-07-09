@@ -2,6 +2,7 @@ package util;
 // 배열을 사용할 때
 // 도움이 될만한 메소드들을 구현한 클래스
 
+import type.Student;
 public class ArrayUtil {
     // 1. int 배열
     // A. size()
@@ -531,7 +532,23 @@ public class ArrayUtil {
                 public static String[] remove(String[] arr, String e) {
                     return remove (arr,indexOf(arr,e));
                 }
-    
+                
+     // 4. Student[]
+     // A. equals(s1, s2)
+     // boolean인데 아직 이퀄스 사용 못함.
+     public static boolean equals(Student s1, Student s2) {
+         return s1.id == s2.id;         
+     }
+     
+     public static boolean contains(Student[] arr, Student e) {
+         for(int i = 0; i < arr.length; i++) {
+             if(equals(arr[i], e)) {
+                 return true;
+             }
+         }
+         
+         return false;
+     }
 }
 
 

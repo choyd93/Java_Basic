@@ -1,6 +1,7 @@
 package day0707;
 // 게시판 프로그램을 작성하시오.
 
+
 // 게시글에는 번호, 제목, 작성자, 내용의 정보가 들어가야 하고
 // 이 프로그램은 총 5 개의 게시글을 관리할 수 있습니다.
 
@@ -11,6 +12,7 @@ package day0707;
 // 강사님 버젼
 
 import java.util.Scanner;
+
 import util.ScannerUtil;
 
 public class Board01 {
