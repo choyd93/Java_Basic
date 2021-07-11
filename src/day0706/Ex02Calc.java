@@ -22,7 +22,7 @@ public class Ex02Calc {
         System.out.print("> ");
         int b = scanner.nextInt();
         
-        remainder(a, b);
+        multiply(a, b);
 
         scanner.close();
     }

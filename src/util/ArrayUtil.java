@@ -532,13 +532,17 @@ public class ArrayUtil {
                 public static String[] remove(String[] arr, String e) {
                     return remove (arr,indexOf(arr,e));
                 }
+               
+                
+                
+                
                 
      // 4. Student[]
      // A. equals(s1, s2)
      // boolean인데 아직 이퀄스 사용 못함.
      public static boolean equals(Student s1, Student s2) {
          return s1.id == s2.id;         
-     }
+     } 
      
      public static boolean contains(Student[] arr, Student e) {
          for(int i = 0; i < arr.length; i++) {
@@ -546,22 +550,174 @@ public class ArrayUtil {
                  return true;
              }
          }
-         
          return false;
      }
+     
+     // A. size(arr)
+     public static int size(Student[] arr) { // <- int로 리턴 (크기는 항상 int)
+         return arr.length;
+     }
+     // B. isEmpty(arr)
+     public static boolean isEmpty(Student[] arr) {
+         return size(arr) == 0;
+     }
+     
+     // C. get(arr, index)
+     public static Student get(Student[] arr, int index) {
+         return arr[index];
+     }
+     
+     // D. contains(arr, e)
+     public static boolean contains(Student[] arr, String e) { // e는 엘리먼트 약자
+         for(int i = 0; i < size(arr); i++) {
+             if(get(arr, i).equals(e)){ // <- 여기부터 이퀄
+                 return true;               
+             }
+         }
+         return false;
+     }
+     // E. indexOf(arr, e)
+         public static int indexOf(Student[] arr, Student e) { //<- int로 리턴
+         for(int i = 0; i < size(arr); i++) {
+             if(get(arr, i).equals(e)) {
+                 return i;
+             }
+         }
+         return -1;
+     }
+     // F. lastIndexOf(arr, e)
+         public static int lastIndexOf(Student[] arr, String e) { //<- int로 리턴
+         for(int i = size(arr) - 1; i >= 0; i--) { 
+             //<- 이거 중요. -1을 하는 이유는 숫자는 1-5지만
+             // 배열은 0-4이기 떄문임.
+             
+             if(get(arr, i).equals(e)) {
+                 return i;
+             }
+         }
+         return -1;
+     }
+     // G. clear(arr)
+         public static Student[] clear(Student[] arr) { // int clear가 파라미터가 없으니까 int, double 둘다 파라미터 추
+         //double[] temp = new double[0];
+         //return temp;
+         arr = new Student[0]; //<- clear는 모두 비워주는거라서 0으로
+         return arr;
+     }
+     // H. add(arr, e)
+         public static Student[] add(Student[] arr, Student e) {
+         Student[] temp = new Student[size(arr)];       
+         
+         // 2. arr의 내용을 temp에 복사한다.
+         for(int i = 0; i < size(arr); i++) {
+             temp[i] = get(arr, i);
+         }
+         
+         // 3. arr의 크기를 1 늘린다.
+         arr = new Student[size(temp) + 1];
+         
+         // 4. temp의 내용을 arr에 복사한다.
+         for(int i = 0; i < size(temp); i++) {
+             arr[i] = get(temp, i);
+         }
+         
+         // 5. arr의 가장 마지막 인덱스에
+         //    e를 넣는다.
+         //int lastIndex = size(arr) - 1;
+         //arr[lastIndex] = e;
+         
+         arr[size(arr) - 1] = e;
+         
+         // 6. 그렇게 크기가 늘어난 arr을
+         //    리턴한다.
+         
+         return arr;
+     }
+     // I. add(arr, index, e)
+        public static Student[] add(Student[] arr, int index, Student e) {
+            if(index >= 0 && index < size(arr)) {
+                Student[] temp = new Student[size(arr)];
+                
+                for(int i = 0; i < size(arr); i++) {
+                    temp[i] = get(arr,i);
+                }
+                arr = new Student[size(temp) + 1];
+                
+                for(int i = 0; i < index; i++) {
+                    arr[i] = get(temp,i);
+                }
+                
+                arr[index] = e;
+                
+                for(int i = index + 1; i < size(arr); i++) {
+                    arr[i] = get(temp, i - 1);
+                }
+            }
+            return arr;
+        }
+        
+     // J. set(arr, index, e)
+        public static Student set(Student[] arr, int index, Student e) {
+            Student temp = get(arr, index);
+            arr[index] = e;
+            
+            return temp;
+        }
+        
+     // K. remove(arr, index)
+        public static Student[] remove(Student[] arr, int index) {
+            // 먼저 유효한 인덱스인지 체크한다.
+            if(index >= 0 && index < size(arr)) {
+                // 1. 먼저 arr의 현재 내용을 임시로 만든 배열에 저장한다.
+                Student[] temp = new Student[size(arr)]; //<---
+                
+                for(int i = 0; i < size(arr); i++) {
+                    temp[i] = get(arr, i);
+                }
+                
+                // 2. arr의 크기를 1 줄여서 새로 만든다.
+                arr = new Student[size(temp) - 1]; //<----
+                
+                // 3. temp로부터 0부터 index이전까지 복사한다.
+                for(int i = 0; i < index; i++) {
+                    arr[i] = get(temp, i);
+                }
+                
+                // 4. temp로부터 index+1부터 끝까지 복사한다.
+                //for(int i = index + 1; i < size(temp); i++) {
+                //   arr[i - 1] = get(temp,i);              
+                //}            
+                for(int i = index; i < size(arr); i++) {
+                   arr[i] = get(temp,i + 1);   
+            }
+        } return arr;
+        }
+        
+     // L. remove(arr, element)
+           public static Student[] remove(Student[] arr, Student e) {
+               return remove (arr,indexOf(arr,e));
+           }
+     
+     
+           
+           // 5. Board[]
+           // A. equals(s1, s2)
+           // boolean인데 아직 이퀄스 사용 못함.
+           public static boolean equals(Board s1, Board s2) {
+               return s1.id == s2.id;         
+           } 
+           
+           public static boolean contains(Board[] arr, Board e) {
+               for(int i = 0; i < arr.length; i++) {
+                   if(equals(arr[i], e)) {
+                       return true;
+                   }
+               }
+               return false;
+           }
+           
+           
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

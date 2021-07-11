@@ -24,7 +24,7 @@ public class LottoGame4 {
     public static void main(String[] args) {
         // 변수
         Scanner scanner = new Scanner(System.in);
-        int[] numbers = new int[0];
+        int[] numbers = new int[0]; //
         int[] userNumbers = new int[0];
         int[] computerNumbers = new int[0];
 
@@ -109,7 +109,8 @@ public class LottoGame4 {
         System.out.println();
         System.out.println("------------------------");
         for (int i = 0; i < ArrayUtil.size(arr); i++) {
-            System.out.printf("%2d ", ArrayUtil.get(arr, i)}
+            System.out.printf("%2d ", ArrayUtil.get(arr, i));
+        }
         System.out.println();
         System.out.println("------------------------");
         System.out.println();

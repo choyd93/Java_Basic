@@ -137,7 +137,7 @@ public class RandomGame {
                 System.out.printf("현재 기록 : %d회\n", score);
             }
             // 2. 최고 기록 보기. 최대값을 모르겠음.
-            max = score / 
+            max = score;
             
             if (userChoice == 2) {
                 if (inputSwitch) {

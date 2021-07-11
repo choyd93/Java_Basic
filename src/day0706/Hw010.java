@@ -1,7 +1,6 @@
 package day0706;
 // 숙제 1.
 
-
 // BmiChecker를 메소드화 시키시오
 
 // 숙제 2. 

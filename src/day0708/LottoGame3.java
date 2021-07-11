@@ -46,7 +46,7 @@ public class LottoGame3 {
         if (userChoice == 1) {
              arr = insertAuto(arr);
         } else if (userChoice == 2) {
-
+            arr = insertManual(scanner,arr); //<- 이거 추가 안해서 수동 안나옴.
         }
 
         sort(arr);

@@ -32,7 +32,7 @@ public class LottoGame40 {
         int index = 0;
         
        String message = "";
-       int [] userChoice = new int[]
+       int [] userChoice = new int[0];
        
        while(true) {
            message = "1. 입력 2. 출력 3. 종료";

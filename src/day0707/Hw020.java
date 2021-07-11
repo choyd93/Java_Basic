@@ -8,7 +8,6 @@ package day0707;
 //비고) 앞으로 ScannerUil은 쓰셔도 되고 안쓰셔도 되지만
 //   
 //강사님 버젼
-
 import java.util.Scanner;
 import util.ScannerUtil;
 

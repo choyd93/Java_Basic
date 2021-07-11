@@ -27,14 +27,13 @@ public class LottoGame30 {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
                        
-        
        // 변수        
         int[] numbers = new int[0];
 
         int index = 0;
         
         while (true) {
-            message = "1. 자동 2. 수동 3. 종료";
+            String message = "1. 자동 2. 수동 3. 종료";
             int userChoice = ScannerUtil.nextInt(scanner, message, 1, 3);
 
             // 자동일 때

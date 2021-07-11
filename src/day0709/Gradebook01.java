@@ -94,7 +94,7 @@ public class Gradebook01 {
             System.out.println("아직 입력된 학생이 존재하지 않습니다.");
         } else {
             for (int i = 0; i < idArray.length; i++) {
-                System.out.println("아직 입력된 학생이 존재하지 않습니다.");
+                // System.out.println("아직 입력된 학생이 존재하지 않습니다."); <- 이게 추가되어있었음. 
                 System.out.printf("%d. %s\n", i + 1, nameArray[i]);
             }
             // 사용자로부터 몇번 인덱스의 학생을 볼지 입력을 받는다.

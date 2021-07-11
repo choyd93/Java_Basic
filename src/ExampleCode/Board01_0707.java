@@ -1,4 +1,4 @@
-package day0707;
+package ExampleCode;
 // 게시판 프로그램을 작성하시오.
 
 // 게시글에는 번호, 제목, 작성자, 내용의 정보가 들어가야 하고
@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 import util.ScannerUtil;
 
-public class Board01 {
+public class Board01_0707 {
     // 상수 선언
     // 총 저장 가능한 글의 갯수
     static final int BOARD_SIZE = 5;

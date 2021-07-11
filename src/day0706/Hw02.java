@@ -1,6 +1,5 @@
 package day0706;
 //숙제 2. 숫자 맞추기 게임에서 점수를 총 5개까지 보관하고
-
 //       점수는 자동으로 오름차순 정렬해서 보여주게 만들어주는 프로그램.
 
 import java.util.Random;
@@ -180,5 +179,6 @@ public class Hw02 {
                 break;
             }
         }
+       scanner.close();
     }
 }
