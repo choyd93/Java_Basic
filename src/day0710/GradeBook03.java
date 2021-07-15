@@ -3,13 +3,16 @@ package day0710;
 // 학생관리 프로그램을 작성하시오.
 // 강사님 버젼
 
-import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Scanner;
+
 import util.ArrayUtil;
 import util.ScannerUtil;
 import type.Student;
 
+
 public class GradeBook03 {
+
     // 상수
     private static final int SCORE_MIN = 0;
     private static final int SCORE_MAX = 100;
