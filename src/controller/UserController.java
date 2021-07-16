@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.Scanner;
+
 import java.util.ArrayList;
 import util.ScannerUtil;
 import model.UserDTO;

@@ -15,6 +15,7 @@ public class UserViewer {
     private Scanner scanner;
     private UserDTO logIn;
     private BoardViewer boardViewer; //토탈 2.
+    private ReplyViewer replyViewer;
 
     private int nextUserId = 1;
 
@@ -26,6 +27,10 @@ public class UserViewer {
     // 토탈 3.
     public void setBoardViewer(BoardViewer boardViewer) {
         this.boardViewer = boardViewer;
+    }
+    
+    public void setReplyViewer(ReplyViewer replyViewer) {
+        this.replyViewer = replyViewer;
     }
 
     public void index() {
@@ -125,24 +130,28 @@ public class UserViewer {
     // 4. 토탈 쇼메뉴 삭제
     
       
-    public void printOne(int id ) { // 4. 토탈 int id, public 추가 
+    public UserDTO printOne(int id) { // 4. 토탈 int id, public 추가 
         UserDTO u = userController.selectOne(id); //4. 토탈 <- 추가
         System.out.println("----------------------------------");
         System.out.println("회원 번호: " + u.getId());
         System.out.println("회원 아이디: " + u.getUsername());
         System.out.println("회원 닉네임: " + u.getNickname());
         System.out.println("----------------------------------");
-        String msg = new String("1. 작성글 보기  2. 수정  3. 회원탈퇴  4. 뒤로가기"); 
+        String msg = new String("1. 작성글 보기  2. 작성댓글 보기 3. 수정  4. 회원탈퇴  4. 뒤로가기"); 
         // <- 4. 토탈 작성글보기 추가 
         
         int userChoice = ScannerUtil.nextInt(scanner, msg, 1, 4);
         if (userChoice == 1) {
             boardViewer.printUserBoard(id); // 토탈 5. (4)
         } else if (userChoice == 2) {
-            update(id);
+            replyViewer.printUserReply(id);
         } else if (userChoice == 3) { 
+            update(id);
+        }  else if (userChoice == 3) { 
             u = delete(id);
         } 
+        
+        return u;
     }
     
     private void update(int id) {
@@ -167,11 +176,11 @@ public class UserViewer {
             UserDTO u = userController.selectOne(id);
             
             if(!password.isEmpty()) {
-                logIn.setPassword(password);
+                u.setPassword(password);
             }
             
             if(!nickname.isEmpty()) {
-                logIn.setNickname(nickname);     
+                u.setNickname(nickname);     
             }
             userController.update(u);
 

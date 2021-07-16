@@ -11,9 +11,6 @@ public class BoardDTO {
     // 제목 등록
     private String title;
     
-    // 작성자 등록
-    private String writer;
-    
     // 작성자의 회원 번호 
     private int writerId; //<- 생성
     
@@ -70,9 +67,7 @@ public class BoardDTO {
     public void setUpdatedDate(Calendar updatedDate) {
         this.updatedDate = updatedDate;
     }
-    public void setWriter(String writer) {
-        this.writer = writer;
-    }
+
     
     
     // equals() 메소드

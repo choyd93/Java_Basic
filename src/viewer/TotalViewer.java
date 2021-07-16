@@ -8,12 +8,14 @@ import util.ScannerUtil;
 public class TotalViewer {
     private BoardViewer boardViewer;
     private UserViewer userViewer;
+    private ReplyViewer replyViewer;
     private UserDTO logIn;
     private Scanner scanner;
 
     public TotalViewer() {
         boardViewer = new BoardViewer();
         userViewer = new UserViewer();
+        replyViewer = new ReplyViewer();
         scanner = new Scanner(System.in);
     }
 
@@ -59,8 +61,8 @@ public class TotalViewer {
                // 보드뷰어 프린트올 메소드 public으로 변경. 빨간줄사라짐. 
             } else if (userChoice == 2) {
                 // 자기 정보 출력 (유저 뷰어)
-                //userViewer.printOne(logIn.getId()); //  <-- 나랑 이름이 다름.
                 //유저 뷰어 프린트원 메소드 public으로 변경?
+                logIn = userViewer.printOne(logIn.getId());
             } else if (userChoice == 3) {
                 System.out.println("정상적으로 로그아웃 되셨습니다.");
                 logIn = null;               
@@ -76,6 +78,12 @@ public class TotalViewer {
     private void inject() {
         boardViewer.setLogIn(logIn);
         boardViewer.setUserViewer(userViewer);
+        boardViewer.setReplyViewer(replyViewer);
+        
         userViewer.setBoardViewer(boardViewer); // 토탈 3.
+        userViewer.setReplyViewer(replyViewer);
+
+        replyViewer.setUserViewer(userViewer);
+        replyViewer.setLogIn(logIn);
     }
 }
