@@ -95,7 +95,7 @@ public class BoardViewer {
             // 글목록이 저장되어 있는 boardList의 isEmpty()가 true가 아니고
             // 사용자가 2를 골랐을 경우에는
             // 사용자가 게시글 개별보기를 선택한 경우이므로
-            // 상세보기할 게시글 번호를 입력받는
+            // 상세보기할 게시글 번호를 입력받는다.
             int userInput = validateId();
             if (userInput != 0) {
                 printOne(userInput);
@@ -137,7 +137,6 @@ public class BoardViewer {
             userInput = ScannerUtil.nextInt(scanner, message);
         }
         return userInput;
-
     }
 
     // printOne()
