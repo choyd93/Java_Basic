@@ -24,6 +24,8 @@ public class Board01 {
         this.kor = kor;
         this.eng = eng;
         this.math = math;
+        calculateSum();
+        calculateAvr();
     }
 
     public int getId() {
@@ -93,12 +95,12 @@ public class Board01 {
     }
     
     public void printInfo() {
-        System.out.println("======================");
-        System.out.println("      [출력화면]");
-        System.out.println("======================");
-        System.out.printf("학번 : [%d] 이름 : [%s]", id, name);
-        System.out.printf("국어점수 : [%03d] 영어점수 : [%03d] 수학점수 : [%03d]", kor, eng, math);
-        System.out.printf("총합 : [%03d] 평균 : [%.2f]", calculateSum(), calculateAvr());
+        System.out.println("========================");
+        System.out.println("      << 학생 성적 >>");
+        System.out.println("========================");
+        System.out.printf("학번 : [%d] 이름 : [%s]\n", id, name);
+        System.out.printf("국어점수 : [%03d] 영어점수 : [%03d] 수학점수 : [%03d]\n", kor, eng, math);
+        System.out.printf("총합 : [%03d] 평균 : [%.2f]\n", calculateSum(), calculateAvr());
         
     }
 
@@ -111,6 +113,11 @@ public class Board01 {
         }
         return false;
 
+    }
+    @Override
+    public String toString() {
+        return "Board01 [id=" + id + ", name=" + name + ", kor=" + kor + ", eng=" + eng + ", math=" + math + ", sum="
+                + sum + ", avr=" + avr + "]";
     }
 
 }
